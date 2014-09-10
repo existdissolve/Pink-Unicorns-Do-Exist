@@ -1,0 +1,4 @@
+component {
+    writedump( application );
+    abort;
+}
