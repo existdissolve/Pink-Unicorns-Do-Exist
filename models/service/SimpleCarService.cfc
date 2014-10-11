@@ -1,4 +1,4 @@
-component extends="cborm.model.VirtualEntityService" singleton {
+component extends="cborm.models.VirtualEntityService" singleton {
     /**
      * Constructor
      */

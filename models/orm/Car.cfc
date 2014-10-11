@@ -1,4 +1,4 @@
-component entityName="Car" table="Car" persistent=true extends="CarTracker.model.orm._Base" {
+component entityName="Car" table="Car" persistent=true extends="CarTracker.models.orm._Base" {
 	//property name="log" inject="coldbox:plugin:logger" persistent="false" scope="this";
 	// primary key
 	property name="CarID" column="CarID" fieldtype="id" generator="increment";
@@ -21,18 +21,18 @@ component entityName="Car" table="Car" persistent=true extends="CarTracker.model
 	// one-to-one
 	
 	// one-to-many
-	property name="Images" singularname="Image" fieldtype="one-to-many" cfc="CarTracker.model.orm.Image" fkcolumn="CarID" inverse=true cascade="all-delete-orphan";
+	property name="Images" singularname="Image" fieldtype="one-to-many" cfc="CarTracker.models.orm.Image" fkcolumn="CarID" inverse=true cascade="all-delete-orphan";
 	// many-to-one
-	property name="Status" column="StatusID" fieldtype="many-to-one" cfc="CarTracker.model.orm.option.Status" fkcolumn="StatusID" lazy="true";
-	property name="Make" column="MakeID" fieldtype="many-to-one" cfc="CarTracker.model.orm.option.Make" fkcolumn="MakeID" lazy="true";
-	property name="Model" column="ModelID" fieldtype="many-to-one" cfc="CarTracker.model.orm.option.Model" fkcolumn="ModelID" lazy="true";
-	property name="Category" column="CategoryID" fieldtype="many-to-one" cfc="CarTracker.model.orm.option.Category" fkcolumn="CategoryID" lazy="true";
-	property name="Color" column="ColorID" fieldtype="many-to-one" cfc="CarTracker.model.orm.option.Color" fkcolumn="ColorID" lazy="true";
-	property name="DriveTrain" column="DriveTrainID" fieldtype="many-to-one" cfc="CarTracker.model.orm.option.DriveTrain" fkcolumn="DriveTrainID" lazy="true";
+	property name="Status" column="StatusID" fieldtype="many-to-one" cfc="CarTracker.models.orm.option.Status" fkcolumn="StatusID" lazy="true";
+	property name="Make" column="MakeID" fieldtype="many-to-one" cfc="CarTracker.models.orm.option.Make" fkcolumn="MakeID" lazy="true";
+	property name="Model" column="ModelID" fieldtype="many-to-one" cfc="CarTracker.models.orm.option.Model" fkcolumn="ModelID" lazy="true";
+	property name="Category" column="CategoryID" fieldtype="many-to-one" cfc="CarTracker.models.orm.option.Category" fkcolumn="CategoryID" lazy="true";
+	property name="Color" column="ColorID" fieldtype="many-to-one" cfc="CarTracker.models.orm.option.Color" fkcolumn="ColorID" lazy="true";
+	property name="DriveTrain" column="DriveTrainID" fieldtype="many-to-one" cfc="CarTracker.models.orm.option.DriveTrain" fkcolumn="DriveTrainID" lazy="true";
 	// many-to-many
-	property name="SalesPeople" singularname="SalesPerson" fieldtype="many-to-many" cfc="CarTracker.model.orm.Staff" linktable="CarStaff" fkcolumn="CarID" inversejoincolumn="StaffID" lazy="extra";
-	property name="Features" singularname="Feature" fieldtype="many-to-many" cfc="CarTracker.model.orm.option.Feature" linktable="CarFeature" fkcolumn="CarID" inversejoincolumn="FeatureID" lazy="extra";
-	property name="ActiveFeatures" singularname="ActiveFeature" fieldtype="many-to-many" cfc="CarTracker.model.orm.option.Feature" linktable="CarFeature" fkcolumn="CarID" inversejoincolumn="FeatureID" lazy="extra" where="Active=1";
+	property name="SalesPeople" singularname="SalesPerson" fieldtype="many-to-many" cfc="CarTracker.models.orm.Staff" linktable="CarStaff" fkcolumn="CarID" inversejoincolumn="StaffID" lazy="extra";
+	property name="Features" singularname="Feature" fieldtype="many-to-many" cfc="CarTracker.models.orm.option.Feature" linktable="CarFeature" fkcolumn="CarID" inversejoincolumn="FeatureID" lazy="extra";
+	property name="ActiveFeatures" singularname="ActiveFeature" fieldtype="many-to-many" cfc="CarTracker.models.orm.option.Feature" linktable="CarFeature" fkcolumn="CarID" inversejoincolumn="FeatureID" lazy="extra" where="Active=1";
 	// calculated properties
 	property name="_Make" formula="SELECT m.LongName FROM Make m WHERE m.MakeID = MakeID";
 	property name="_Model" formula="SELECT m.LongName FROM Model m WHERE m.ModelID = ModelID";

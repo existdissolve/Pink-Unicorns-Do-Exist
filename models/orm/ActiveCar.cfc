@@ -1,4 +1,4 @@
-component entityName="ActiveCar" table="Car" persistent=true extends="cborm.model.ActiveEntity" {
+component entityName="ActiveCar" table="Car" persistent=true extends="cborm.models.ActiveEntity" {
     // primary key
     property name="CarID" column="CarID" fieldtype="id" generator="increment";
     // non-relational columns

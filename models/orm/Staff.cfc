@@ -1,4 +1,4 @@
-component entityName="Staff" table="Staff" persistent=true extends="CarTracker.model.orm._Base" {
+component entityName="Staff" table="Staff" persistent=true extends="CarTracker.models.orm._Base" {
 	// primary key
 	property name="StaffID" column="StaffID" fieldtype="id" generator="increment";
 	// non-relational columns
@@ -22,9 +22,9 @@ component entityName="Staff" table="Staff" persistent=true extends="CarTracker.m
 	// one-to-many
 	
 	// many-to-one
-	property name="Position" column="PositionID" fieldtype="many-to-one" cfc="CarTracker.model.orm.option.Position" fkcolumn="PositionID";
+	property name="Position" column="PositionID" fieldtype="many-to-one" cfc="CarTracker.models.orm.option.Position" fkcolumn="PositionID";
 	// many-to-many
-	property name="UserRoles" singularname="UserRole" fieldtype="many-to-many" cfc="CarTracker.model.orm.option.UserRole" linktable="StaffUserRole" fkcolumn="StaffID" inversejoincolumn="UserRoleID" lazy="extra";
+	property name="UserRoles" singularname="UserRole" fieldtype="many-to-many" cfc="CarTracker.models.orm.option.UserRole" linktable="StaffUserRole" fkcolumn="StaffID" inversejoincolumn="UserRoleID" lazy="extra";
 	// calculated properties
 	
 	// object constraints

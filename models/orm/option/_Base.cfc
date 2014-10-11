@@ -1,4 +1,4 @@
-component displayname="_Base" mappedSuperclass="true" extends="CarTracker.model.orm._Base" {
+component displayname="_Base" mappedSuperclass="true" extends="CarTracker.models.orm._Base" {
 	// primary key
 	
 	// non-relational columns

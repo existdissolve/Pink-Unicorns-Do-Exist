@@ -2,9 +2,9 @@
 * Handler for Cars
 */
 component {
-    property name="ORMService" inject="entityService";
-    property name="VirtualCarService" inject="entityService:SimpleCar";
-    property name="CarService" inject="id:SimpleCarService";
+    property name="ORMService"          inject="entityService";
+    property name="VirtualCarService"   inject="entityService:SimpleCar";
+    property name="CarService"          inject="id:SimpleCarService";
     
     function preHandler( event, action, eventArguments ) {
         event.setLayout( "Layout.Presentation" );

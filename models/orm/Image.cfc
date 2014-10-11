@@ -1,4 +1,4 @@
-component entityName="Image" table="Image" persistent=true extends="CarTracker.model.orm._Base" {
+component entityName="Image" table="Image" persistent=true extends="CarTracker.models.orm._Base" {
 	// primary key
 	property name="ImageID" column="ImageID" fieldtype="id" generator="increment";
 	// non-relational columns
@@ -9,7 +9,7 @@ component entityName="Image" table="Image" persistent=true extends="CarTracker.m
 	// one-to-many
 
 	// many-to-one
-	property name="Car" column="CarID" fieldtype="many-to-one" cfc="CarTracker.model.orm.Car" fkcolumn="CarID";
+	property name="Car" column="CarID" fieldtype="many-to-one" cfc="CarTracker.models.orm.Car" fkcolumn="CarID";
 	// many-to-many
 
 	// calculated properties
