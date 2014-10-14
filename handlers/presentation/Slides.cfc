@@ -5,7 +5,7 @@ component {
     property name="ORMService"          inject="entityService";
     property name="VirtualCarService"   inject="entityService:SimpleCar";
     property name="CarService"          inject="id:SimpleCarService";
-    
+
     function preHandler( event, action, eventArguments ) {
         event.setLayout( "Layout.Presentation" );
     }
@@ -90,20 +90,20 @@ component {
         var c = CarService.newCriteria();
         // avg and sum
         prc.total = c.isTrue( "IsSold" )
-         .withProjections( 
+         .withProjections(
             sum="SalePrice",
-            avg="SalePrice" 
+            avg="SalePrice"
          ).list();
         var c = CarService.newCriteria();
         // limit properties returned
         prc.properties = c.isTrue( "IsSold" )
-         .withProjections( 
+         .withProjections(
             property="Year,Description,SaleDate,AcquisitionDate,SalePrice,ListPrice"
          ).list();
         // tranform results
         var c = CarService.newCriteria();
         prc.transformed = c.isTrue( "IsSold" )
-         .withProjections( 
+         .withProjections(
             property="Year,Description,SaleDate,AcquisitionDate,SalePrice,ListPrice"
          )
          .resultTransformer( c.ALIAS_TO_ENTITY_MAP )

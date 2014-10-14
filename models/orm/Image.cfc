@@ -1,4 +1,4 @@
-component entityName="Image" table="Image" persistent=true extends="CarTracker.models.orm._Base" {
+component entityName="Image" table="Image" persistent=true extends="CarTracker.models.orm.Base" {
 	// primary key
 	property name="ImageID" column="ImageID" fieldtype="id" generator="increment";
 	// non-relational columns

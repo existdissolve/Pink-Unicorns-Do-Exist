@@ -1,4 +1,4 @@
-component entityName="Car" table="Car" persistent=true extends="CarTracker.models.orm._Base" {
+component entityName="Car" table="Car" persistent=true extends="CarTracker.models.orm.Base" {
 	//property name="log" inject="coldbox:plugin:logger" persistent="false" scope="this";
 	// primary key
 	property name="CarID" column="CarID" fieldtype="id" generator="increment";

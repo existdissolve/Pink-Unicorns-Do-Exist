@@ -1,4 +1,4 @@
-component entityName="SimpleCar" table="Car" persistent=true extends="CarTracker.models.orm._Base" {
+component entityName="SimpleCar" table="Car" persistent=true extends="CarTracker.models.orm.Base" {
     // primary key
     property name="CarID" column="CarID" fieldtype="id" generator="increment";
     // non-relational columns

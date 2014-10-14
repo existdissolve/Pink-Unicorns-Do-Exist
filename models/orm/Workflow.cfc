@@ -1,4 +1,4 @@
-component entityName="Workflow" table="Workflow" persistent=true extends="CarTracker.models.orm._Base" {
+component entityName="Workflow" table="Workflow" persistent=true extends="CarTracker.models.orm.Base" {
 	// primary key
 	property name="WorkflowID" column="WorkflowID" fieldtype="id" generator="increment";
 	// non-relational columns

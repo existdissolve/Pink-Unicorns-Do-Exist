@@ -1,4 +1,4 @@
-component displayname="_Base" mappedSuperclass="true" {
+component mappedSuperclass="true"{
 	// primary key
 	
 	// non-relational columns
@@ -15,7 +15,7 @@ component displayname="_Base" mappedSuperclass="true" {
 	// calculated properties
 	
 	// methods
-	public _Base function init() {
+	public Base function init() {
 		return this;
 	}
 	

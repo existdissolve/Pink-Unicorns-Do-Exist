@@ -1,4 +1,4 @@
-component displayname="_Base" mappedSuperclass="true" extends="CarTracker.models.orm._Base" {
+component displayname="Base" mappedSuperclass="true" extends="CarTracker.models.orm.Base" {
 	// primary key
 	
 	// non-relational columns
@@ -21,7 +21,7 @@ component displayname="_Base" mappedSuperclass="true" extends="CarTracker.models
 	};
 	
 	// methods
-	public _Base function init() {
+	public Base function init() {
 		return this;
 	}
 } 

@@ -29,15 +29,12 @@ component{
 	this.ormsettings = {
 		cfclocation 	= "models.orm",
 		datasource 		= "CarTracker",
-		dbcreate		= "dropcreate",
-		sqlscript 		= "CarTracker.sql",
 		logsql			= true,
 		eventhandling	= true,
 		// Use the ColdBox WireBox Handler for events
 		eventHandler = "cborm.models.EventHandler",
 		flushAtRequestEnd	= false,
-		autoManageSession	= false,
-		//secondarycacheEnabled=false
+		autoManageSession	= false
 	};
 
 	// application start
