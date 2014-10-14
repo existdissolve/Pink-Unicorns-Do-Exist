@@ -42,15 +42,20 @@
         "Joel Watson <existdissolve@gmail.com>"
     ],
     "dependencies":{
-        "cborm":"1.0.0",
-        "coldbox-be":"4.0.0"
+        "coldbox-be":"4.0.0",
+        "cborm":"1.0.0"                
     },
     "devDependencies":{
+    	"cbdebugger":"1.0.0",
         "testbox":"2.0.0"
     },
     "installPaths":{
-        "coldbox-be":"coldbox"
+        "coldbox-be":"coldbox",
+        "cbdebugger":"modules/cbdebugger"
     },
+    "ignore":[
+        
+    ],
     "testbox":{
         "runner":[
             {
