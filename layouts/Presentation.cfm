@@ -73,8 +73,7 @@
         </style>
     </head>
     <body>
-        <cfset event.paramValue( "pageTitle", "Listing" )>
-        <cfoutput><h2 class="header">ColdBox + ORM: #rc.pageTitle#</h2></cfoutput>
+        <cfoutput><h2 class="header">ColdBox + ORM: #event.getPrivateValue( 'pageTitle', "Listing" )#</h2></cfoutput>
         <div class="container-fluid">
             <div class="row hero" style="padding-top:40px;">
                 <div class="col-md-9">

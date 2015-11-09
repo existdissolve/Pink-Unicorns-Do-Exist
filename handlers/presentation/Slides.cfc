@@ -8,43 +8,61 @@ component {
     property name="VirtualCarService"   inject="entityService:SimpleCar";
     property name="carService"          inject="id:SimpleCarService";
 
-    function index( required Any event, required Struct rc, required Struct prc ) {
+    /**
+    * Home
+    */
+    function index( event, rc, prc ) {
         event.setView( view='presentation/slides/index' );
     }
 
-    function baseORMService( required Any event, required Struct rc, required Struct prc ) {
-        rc.pageTitle = "Base ORM Service";
-        prc.newCar = ORMService.new( entityName='SimpleCar', properties={Year= 2012, ListPrice= 22000});
-        prc.myCar = ORMService.findWhere( entityName='SimpleCar', criteria={ CarID = 12 } );
-        prc.cars = ORMService.list( entityName="SimpleCar", max=3, asQuery=false );
+    /**
+    * Base ORM service
+    */
+    function baseORMService( event, rc, prc ) {
+        prc.pageTitle 	= "Base ORM Service";
+        prc.newCar 		= ORMService.new( entityName='SimpleCar', properties={ Year = 2012, ListPrice = 22000});
+        prc.myCar 		= ORMService.findWhere( entityName='SimpleCar', criteria={ CarID = 12 } );
+        prc.cars 		= ORMService.list( entityName="SimpleCar", max=3, asQuery=false );
     }
 
-    function activeEntity( required Any event, required Struct rc, required Struct prc ) {
-        rc.pageTitle = "Active Entity";
-        var car = entityNew( "ActiveCar" );
-        prc.newCar = car.new( properties={Year= 2012, ListPrice= 22000});
-        prc.myCar = car.findWhere( criteria={ CarID = 12 } );
-        prc.cars = car.list( max=3, asQuery=false );
+    /**
+    * Active Entity
+    */
+    function activeEntity( event, rc, prc ) {
+        prc.pageTitle 	= "Active Entity";
+        var car 		= entityNew( "ActiveCar" );
+        prc.newCar 		= car.new( properties={Year= 2012, ListPrice= 22000});
+        prc.myCar 		= car.findWhere( criteria={ CarID = 12 } );
+        prc.cars 		= car.list( max=3, asQuery=false );
     }
 
-    function virtualEntityService( required Any event, required Struct rc, required Struct prc ) {
-        rc.pageTitle = "Virtual Entity Service";
-        prc.newCar = VirtualcarService.new( properties={Year= 2012, ListPrice= 22000});
-        prc.myCar = VirtualcarService.findWhere( criteria={ CarID = 12 } );
-        prc.cars = VirtualcarService.list( max=3, asQuery=false );
+    /**
+    * Virtual Entity Service
+    */
+    function virtualEntityService( event, rc, prc ) {
+        prc.pageTitle 	= "Virtual Entity Service";
+        prc.newCar 		= VirtualcarService.new( properties={Year= 2012, ListPrice= 22000});
+        prc.myCar 		= VirtualcarService.findWhere( criteria={ CarID = 12 } );
+        prc.cars 		= VirtualcarService.list( max=3, asQuery=false );
     }
 
-    function concreteService( required Any event, required Struct rc, required Struct prc ) {
-        rc.pageTitle = "Concrete Service";
-        prc.newCar = carService.new( properties={Year= 2012, ListPrice= 22000});
-        prc.myCar = carService.findWhere( criteria={ CarID = 12 } );
-        prc.cars = carService.list( max=3, asQuery=false );
-        prc.newCars = carService.getNewCars();
+    /**
+    * Concrete ORM service
+    */
+    function concreteService( event, rc, prc ) {
+        prc.pageTitle 	= "Concrete Service";
+        prc.newCar 		= carService.new( properties={Year= 2012, ListPrice= 22000});
+        prc.myCar 		= carService.findWhere( criteria={ CarID = 12 } );
+        prc.cars 		= carService.list( max=3, asQuery=false );
+        prc.newCars 	= carService.getNewCars();
     }
 
-    function validation( required Any event, required Struct rc, required Struct prc ) {
-        rc.pageTitle = "Entity Validation";
-        prc.newCar = carService.new( properties={
+    /**
+    * Validation
+    */
+    function validation( event, rc, prc ) {
+        prc.pageTitle 	= "Entity Validation";
+        prc.newCar 		= carService.new( properties={
             /*Year = 2012,
             AcquisitionDate = "Henry",
             VIN = "VIN123-GJH-1923",
@@ -53,8 +71,11 @@ component {
         prc.validationResults = validateModel( target=prc.newCar );
     }
 
-    function populate( required Any event, required Struct rc, required Struct prc ) {
-        rc.pageTitle = "Populate()";
+    /**
+    * Population
+    */
+    function populate( event, rc, prc ) {
+        prc.pageTitle = "Populate()";
         var newCar = carService.new();
         var fakeForm = {
             Year = 2012,
@@ -68,8 +89,12 @@ component {
         prc.newCar = carService.populate( target=newCar, memento=fakeform, composeRelationships=true );
     }
 
-    function query_simple( required Any event, required Struct rc, required Struct prc ) {
-        rc.pageTitle = "Criteria Builder - Simple Query";
+    /**
+    * Criteria queries simple
+    */
+    function query_simple( event, rc, prc ) {
+        prc.pageTitle = "Criteria Builder - Simple Query";
+
         var c = carService.newCriteria();
             c.between( "SaleDate", createODBCDate( "2013-04-01" ), createODBCDate( "2013-07-01" ) );
         
@@ -84,8 +109,11 @@ component {
         prc.flatResultsTime = getTickCount() - sTime;
     }
 
-    function query_projection( required Any event, required Struct rc, required Struct prc ) {
-        rc.pageTitle = "Criteria Builder - Projection";
+    /**
+    * Criteria queries projections
+    */
+    function query_projection( event, rc, prc ) {
+        prc.pageTitle = "Criteria Builder - Projection";
         var c = carService.newCriteria();
         // average sale price for all vehicles
         prc.avg = c.isTrue( "IsSold" ).withProjections( avg="SalePrice" ).list();
@@ -95,28 +123,33 @@ component {
         var c = carService.newCriteria();
         // avg and sum
         prc.total = c.isTrue( "IsSold" )
-         .withProjections(
-            sum="SalePrice",
-            avg="SalePrice"
-         ).list();
+			.withProjections(
+				sum="SalePrice",
+				avg="SalePrice"
+			)
+			.list();
         var c = carService.newCriteria();
         // limit properties returned
         prc.properties = c.isTrue( "IsSold" )
-         .withProjections(
-            property="Year,Description,SaleDate,AcquisitionDate,SalePrice,ListPrice"
-         ).list();
+         	.withProjections(
+            	property="Year,Description,SaleDate,AcquisitionDate,SalePrice,ListPrice"
+         	)
+         	.list();
         // tranform results
         var c = carService.newCriteria();
         prc.transformed = c.isTrue( "IsSold" )
-         .withProjections(
-            property="Year,Description,SaleDate,AcquisitionDate,SalePrice,ListPrice"
-         )
-         .resultTransformer( c.ALIAS_TO_ENTITY_MAP )
-         .list();
+         	.withProjections(
+            	property="Year,Description,SaleDate,AcquisitionDate,SalePrice,ListPrice"
+         	)
+         	.resultTransformer( c.ALIAS_TO_ENTITY_MAP )
+         	.list();
     }
 
-    function query_alias( required Any event, required Struct rc, required Struct prc ) {
-        rc.pageTitle = "Criteria Builder - Projection";
+    /**
+    * Criteria queries aliases
+    */
+    function query_alias( event, rc, prc ) {
+        prc.pageTitle = "Criteria Builder - Projection";
         var c = carService.newCriteria();
         // left join
         prc.make = c.createAlias( "Make", "make", c.LEFT_JOIN )
@@ -129,8 +162,11 @@ component {
           .isEq( "position.LongName", "General Manager" ).list();
     }
 
-    function query_subquery( required Any event, required Struct rc, required Struct prc ) {
-        rc.pageTitle = "Criteria Builder - Subquery";
+    /**
+    * Criteria queries subqueries
+    */
+    function query_subquery( event, rc, prc ) {
+        prc.pageTitle = "Criteria Builder - Subquery";
         var c = carService.newCriteria();
         // add subquery
         c.add(
@@ -147,7 +183,10 @@ component {
         prc.results = c.list();
     }
 
-    function query_logging( required Any event, required Struct rc, required Struct prc ) {
-        rc.pageTitle = "Criteria Builder - ORM SQL Logging";
+    /**
+    * Get Logging
+    */
+    function query_logging( event, rc, prc ) {
+        prc.pageTitle = "Criteria Builder - ORM SQL Logging";
     }
 }
