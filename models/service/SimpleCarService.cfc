@@ -1,4 +1,8 @@
+/**
+* Simple car concrete service
+*/
 component extends="cborm.models.VirtualEntityService" singleton {
+
     /**
      * Constructor
      */

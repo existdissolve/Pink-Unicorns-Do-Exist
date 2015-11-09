@@ -28,13 +28,10 @@
         <div id="one" class="panel-collapse collapse in">
             <div class="panel-body">
  
-<!--- Store the ColdFusion level. --->
-<cfset strLevel = SERVER.ColdFusion.ProductVersion />
-<cfdump var="#strLevel#">
 <pre>
 property name="ORMService" inject="entityService";
 ...
-getPlugin( "ORMService" );
+getModel( "BaseORMService@cborm" );
 </pre>
             </div>
         </div>

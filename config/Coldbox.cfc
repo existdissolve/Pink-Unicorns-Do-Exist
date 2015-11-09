@@ -51,7 +51,7 @@ component{
 
 		//Layout Settings
 		layoutSettings = {
-			defaultLayout = "Layout.Main.cfm"
+			defaultLayout = "Presentation.cfm"
 		};
 
 		orm = {

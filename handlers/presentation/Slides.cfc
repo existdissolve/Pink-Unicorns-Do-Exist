@@ -2,16 +2,14 @@
 * Handler for Cars
 */
 component {
+
+	// DI
     property name="ORMService"          inject="entityService";
     property name="VirtualCarService"   inject="entityService:SimpleCar";
     property name="CarService"          inject="id:SimpleCarService";
 
-    function preHandler( event, action, eventArguments ) {
-        event.setLayout( "Layout.Presentation" );
-    }
-
     function index( required Any event, required Struct rc, required Struct prc ) {
-        //event.setView( view='presentation/index', layout="Layout.Presentation" );
+        event.setView( view='presentation/slides/index' );
     }
 
     function baseORMService( required Any event, required Struct rc, required Struct prc ) {
@@ -25,8 +23,8 @@ component {
         rc.pageTitle = "Active Entity";
         var car = entityNew( "ActiveCar" );
         prc.newCar = car.new( properties={Year= 2012, ListPrice= 22000});
-        prc.myCar = car.findWhere( entityName='SimpleCar', criteria={ CarID = 12 } );
-        prc.cars = car.list( entityName="SimpleCar", max=3, asQuery=false );
+        prc.myCar = car.findWhere( criteria={ CarID = 12 } );
+        prc.cars = car.list( max=3, asQuery=false );
     }
 
     function virtualEntityService( required Any event, required Struct rc, required Struct prc ) {

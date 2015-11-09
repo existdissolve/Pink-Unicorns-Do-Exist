@@ -1,5 +1,6 @@
 <h3>Populate the Productivity!</h3>
 <pre>
+// Incoming Fake Form
 var fakeForm = {
     Year = 2012,
     AcquisitionDate = "2013-12-15",
@@ -9,11 +10,11 @@ var fakeForm = {
     Model = 14,
     Color = 9
 };
-var newCar = CarService.new();
-prc.newCar = CarService.populate( 
-    target=newCar, 
-    memento=fakeform, 
-    composeRelationships=true 
+// Populate with Relationships
+prc.newCar = carService.populate( 
+    target = carService.new(), 
+    memento = fakeform, 
+    composeRelationships = true 
 );
 </pre>
 <cfdump var="#prc.newCar#" expand="false">
