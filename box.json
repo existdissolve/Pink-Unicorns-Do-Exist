@@ -40,6 +40,7 @@
         "cborm":"1.0.3"
     },
     "devDependencies":{
+        
     },
     "installPaths":{
         "coldbox":"coldbox",
