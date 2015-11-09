@@ -6,7 +6,7 @@ component {
 	// DI
     property name="ORMService"          inject="entityService";
     property name="VirtualCarService"   inject="entityService:SimpleCar";
-    property name="CarService"          inject="id:SimpleCarService";
+    property name="carService"          inject="id:SimpleCarService";
 
     function index( required Any event, required Struct rc, required Struct prc ) {
         event.setView( view='presentation/slides/index' );
@@ -29,22 +29,22 @@ component {
 
     function virtualEntityService( required Any event, required Struct rc, required Struct prc ) {
         rc.pageTitle = "Virtual Entity Service";
-        prc.newCar = VirtualCarService.new( properties={Year= 2012, ListPrice= 22000});
-        prc.myCar = VirtualCarService.findWhere( criteria={ CarID = 12 } );
-        prc.cars = VirtualCarService.list( max=3, asQuery=false );
+        prc.newCar = VirtualcarService.new( properties={Year= 2012, ListPrice= 22000});
+        prc.myCar = VirtualcarService.findWhere( criteria={ CarID = 12 } );
+        prc.cars = VirtualcarService.list( max=3, asQuery=false );
     }
 
     function concreteService( required Any event, required Struct rc, required Struct prc ) {
         rc.pageTitle = "Concrete Service";
-        prc.newCar = CarService.new( properties={Year= 2012, ListPrice= 22000});
-        prc.myCar = CarService.findWhere( criteria={ CarID = 12 } );
-        prc.cars = CarService.list( max=3, asQuery=false );
-        prc.newCars = CarService.getNewCars();
+        prc.newCar = carService.new( properties={Year= 2012, ListPrice= 22000});
+        prc.myCar = carService.findWhere( criteria={ CarID = 12 } );
+        prc.cars = carService.list( max=3, asQuery=false );
+        prc.newCars = carService.getNewCars();
     }
 
     function validation( required Any event, required Struct rc, required Struct prc ) {
         rc.pageTitle = "Entity Validation";
-        prc.newCar = CarService.new( properties={
+        prc.newCar = carService.new( properties={
             /*Year = 2012,
             AcquisitionDate = "Henry",
             VIN = "VIN123-GJH-1923",
@@ -55,7 +55,7 @@ component {
 
     function populate( required Any event, required Struct rc, required Struct prc ) {
         rc.pageTitle = "Populate()";
-        var newCar = CarService.new();
+        var newCar = carService.new();
         var fakeForm = {
             Year = 2012,
             AcquisitionDate = "2013-12-15",
@@ -65,41 +65,48 @@ component {
             Model = 14,
             Color = 9
         };
-        prc.newCar = CarService.populate( target=newCar, memento=fakeform, composeRelationships=true );
+        prc.newCar = carService.populate( target=newCar, memento=fakeform, composeRelationships=true );
     }
 
     function query_simple( required Any event, required Struct rc, required Struct prc ) {
         rc.pageTitle = "Criteria Builder - Simple Query";
-        var c = CarService.newCriteria();
+        var c = carService.newCriteria();
             c.between( "SaleDate", createODBCDate( "2013-04-01" ), createODBCDate( "2013-07-01" ) );
+        
         prc.count = c.count();
-        //max=3, offset=6
+
+        var sTime = getTickCount();
         prc.results = c.list();
+        prc.resultsTime = getTickCount() - sTime;
+
+		var sTime = getTickCount();
+        prc.flatResults = c.resultTransformer( c.ALIAS_TO_ENTITY_MAP ).list();
+        prc.flatResultsTime = getTickCount() - sTime;
     }
 
     function query_projection( required Any event, required Struct rc, required Struct prc ) {
         rc.pageTitle = "Criteria Builder - Projection";
-        var c = CarService.newCriteria();
+        var c = carService.newCriteria();
         // average sale price for all vehicles
         prc.avg = c.isTrue( "IsSold" ).withProjections( avg="SalePrice" ).list();
-        var c = CarService.newCriteria();
+        var c = carService.newCriteria();
         // total sum of sales for all vehicles
         prc.sum = c.isTrue( "IsSold" ).withProjections( sum="SalePrice" ).list();
-        var c = CarService.newCriteria();
+        var c = carService.newCriteria();
         // avg and sum
         prc.total = c.isTrue( "IsSold" )
          .withProjections(
             sum="SalePrice",
             avg="SalePrice"
          ).list();
-        var c = CarService.newCriteria();
+        var c = carService.newCriteria();
         // limit properties returned
         prc.properties = c.isTrue( "IsSold" )
          .withProjections(
             property="Year,Description,SaleDate,AcquisitionDate,SalePrice,ListPrice"
          ).list();
         // tranform results
-        var c = CarService.newCriteria();
+        var c = carService.newCriteria();
         prc.transformed = c.isTrue( "IsSold" )
          .withProjections(
             property="Year,Description,SaleDate,AcquisitionDate,SalePrice,ListPrice"
@@ -110,12 +117,12 @@ component {
 
     function query_alias( required Any event, required Struct rc, required Struct prc ) {
         rc.pageTitle = "Criteria Builder - Projection";
-        var c = CarService.newCriteria();
+        var c = carService.newCriteria();
         // left join
         prc.make = c.createAlias( "Make", "make", c.LEFT_JOIN )
           .isEq( "make.LongName", "Ford" ).list();
 
-        var c = CarService.newCriteria();
+        var c = carService.newCriteria();
         // nested alias
         prc.salespeople = c.createAlias( "SalesPeople", "staff" )
           .createAlias( "staff.Position", "position" )
@@ -124,7 +131,7 @@ component {
 
     function query_subquery( required Any event, required Struct rc, required Struct prc ) {
         rc.pageTitle = "Criteria Builder - Subquery";
-        var c = CarService.newCriteria();
+        var c = carService.newCriteria();
         // add subquery
         c.add(
           c.createSubcriteria( "Car", "carstaff" )

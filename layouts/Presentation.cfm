@@ -83,23 +83,32 @@
                 </div>
                 <cfoutput>
                     <div class="col-md-3">
-                        <ul>
-                            <li><a href="#event.buildLink( linkto='presentation/slides/baseormservice' )#">Base ORM Service</a></li>
-                            <li><a href="#event.buildLink( linkto='presentation/slides/activeentity' )#">Active Entity</a></li>
-                            <li><a href="#event.buildLink( linkto='presentation/slides/virtualentityservice' )#">Virtual Entity Service</a></li>
-                            <li><a href="#event.buildLink( linkto='presentation/slides/concreteservice' )#">Concrete Service</a></li>
-                            <li><a href="#event.buildLink( linkto='presentation/slides/populate' )#">Populate()</a></li>
-                            <li><a href="#event.buildLink( linkto='presentation/slides/validation' )#">Validation</a></li>
-                            <li>Criteria Builder
+
+                    	<p class="text-center">
+                    		<img src="http://www.ortussolutions.com/__media/coldbox-185-logo.png">
+                    	</p>
+
+                    	<br>
+
+                        <ul class="list-group">
+                            <li class="list-group-item"><a href="#event.buildLink( linkto='presentation/slides/baseormservice' )#">Base ORM Service</a></li>
+                            <li class="list-group-item"><a href="#event.buildLink( linkto='presentation/slides/activeentity' )#">Active Entity</a></li>
+                            <li class="list-group-item"><a href="#event.buildLink( linkto='presentation/slides/virtualentityservice' )#">Virtual Entity Service</a></li>
+                            <li class="list-group-item"><a href="#event.buildLink( linkto='presentation/slides/concreteservice' )#">Concrete Service</a></li>
+                            <li class="list-group-item"><a href="#event.buildLink( linkto='presentation/slides/populate' )#">Populate()</a></li>
+                            <li class="list-group-item"><a href="#event.buildLink( linkto='presentation/slides/validation' )#">Validation</a></li>
+                            <li class="list-group-item">
+                            	<h3>Criteria Builder</h3>
                                 <ul>
-                                    <li><a href="#event.buildLink( linkto='presentation/slides/query_simple' )#">Simple Query</a></li>
-                                    <li><a href="#event.buildLink( linkto='presentation/slides/query_projection' )#">Projection</a></li>
-                                    <li><a href="#event.buildLink( linkto='presentation/slides/query_alias' )#">Aliases</a></li>
-                                    <li><a href="#event.buildLink( linkto='presentation/slides/query_subquery' )#">Subquery</a></li>
-                                    <li><a href="#event.buildLink( linkto='presentation/slides/query_logging' )#">SQL Logging</a></li>
+                                    <li class="list-group-item"><a href="#event.buildLink( linkto='presentation/slides/query_simple' )#">Simple Query</a></li>
+                                    <li class="list-group-item"><a href="#event.buildLink( linkto='presentation/slides/query_projection' )#">Projection</a></li>
+                                    <li class="list-group-item"><a href="#event.buildLink( linkto='presentation/slides/query_alias' )#">Aliases</a></li>
+                                    <li class="list-group-item"><a href="#event.buildLink( linkto='presentation/slides/query_subquery' )#">Subquery</a></li>
+                                    <li class="list-group-item"><a href="#event.buildLink( linkto='presentation/slides/query_logging' )#">SQL Logging</a></li>
                                 </ul>
                             </li>
                         </ul>
+
                     </div>
                 </cfoutput>
             </div>

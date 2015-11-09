@@ -6,7 +6,7 @@ www.coldboxframework.com | www.luismajano.com | www.ortussolutions.com
 */
 component{
 	// Application properties
-	this.name = "Pink Unicorns" & hash( getCurrentTemplatePath() );
+	this.name = "Pink Unicorns Do Exist" & hash( getCurrentTemplatePath() );
 	this.sessionManagement 	= true;
 	this.sessionTimeout 	= createTimeSpan(0,0,30,0);
 	this.setClientCookies 	= true;
@@ -23,6 +23,21 @@ component{
 	// CREATE APP Mappings
 	this.mappings[ "/CarTracker" ] 	= COLDBOX_APP_ROOT_PATH;
 	this.mappings[ "/cborm" ] 		= COLDBOX_APP_ROOT_PATH & "modules/cborm";
+
+	// Datasource
+	this.datasources = {
+        "CarTracker"    = {
+            database    = "CarTracker",
+            host        = "localhost",
+            port        = "3306",
+            driver      = "MySQL5",
+            username    = "root",
+            password    = "mysql",
+            // Lucee Configs
+			class		= 'org.gjt.mm.mysql.Driver',
+			connectionString = 'jdbc:mysql://localhost:3306/CarTracker?useUnicode=true&characterEncoding=UTF-8&useLegacyDatetimeCode=true'
+        }
+    };
 
 	// ORM Settings
 	this.ormenabled=true;
@@ -64,6 +79,10 @@ component{
 		application.cbBootstrap.onRequestStart( arguments.targetPage );
 
 		return true;
+	}
+
+	public void function onApplicationEnd( struct appScope ){
+		arguments.appScope.cbBootStrap.onApplicationEnd( argumentCollection=arguments );
 	}
 
 	public void function onSessionStart(){
