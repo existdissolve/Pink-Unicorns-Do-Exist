@@ -1,0 +1,22 @@
+{
+    "app":{
+        "serverHomeDirectory":".engine/lucee4",
+        "cfengine":"lucee@4.5"
+    },
+    "web":{
+        "rewrites":{
+            "enable":true
+        },
+        "http":{
+            "port":"8090"
+        },
+        "ssl":{
+            "enable":false,
+            "port":"8443"
+        }
+    },
+    "jvm":{
+        "heapSize":"1024"
+    },
+    "openBrowser":"true"
+}
