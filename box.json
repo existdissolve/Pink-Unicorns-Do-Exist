@@ -1,6 +1,6 @@
 {
     "name":"Car Tracker CBORM Demo",
-    "version":"1.0.1",
+    "version":"2.0.0",
     "author":"Luis Majano <lmajano@ortussolutions.com>",
     "createPackageDirectory":false,
     "homepage":"http://www.coldbox.org",

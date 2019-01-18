@@ -1,7 +1,7 @@
 {
     "app":{
-        "serverHomeDirectory":".engine/lucee4",
-        "cfengine":"lucee@4.5"
+        "serverHomeDirectory":".engine/lucee5",
+        "cfengine":"lucee@5"
     },
     "web":{
         "rewrites":{
