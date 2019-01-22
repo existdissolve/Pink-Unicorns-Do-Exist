@@ -38,7 +38,7 @@ component entityName="SimpleCar" table="Car" persistent=true extends="CarTracker
         "ListPrice" = { required=true, requiredMessage="Please enter a List Price", min=4000 },
         "AcquisitionDate" = { required=true, requiredMessage="Please enter an Acquisition Date", type="date", typeMessage="Please enter a valid Acquisition Date" },
         "SaleDate" = { type="date", typeMessage="Please enter a valid Sale Date" },
-        "VIN" = { required=true, requiredMessage="Please enter a VIN", unique=true, uniqueMessage="Please enter a unique VIN"},
+        "VIN" = { required=true, requiredMessage="Please enter a VIN", validator: "UniqueValidator@cborm", uniqueMessage="Please enter a unique VIN"},
         "IsSold" = { required=true, requiredMessage="Specify whether this vehicle is sold or not", type="boolean", typeMessage="Please specify Yes or No for whether this vehicle is sold"}
     };
     
