@@ -28,13 +28,10 @@
         <div id="one" class="panel-collapse collapse in">
             <div class="panel-body">
  
-<!--- Store the ColdFusion level. --->
-<cfset strLevel = SERVER.ColdFusion.ProductVersion />
-<cfdump var="#strLevel#">
 <pre>
 property name="ORMService" inject="entityService";
 ...
-getPlugin( "ORMService" );
+getModel( "BaseORMService@cborm" );
 </pre>
             </div>
         </div>
@@ -54,7 +51,7 @@ getPlugin( "ORMService" );
 <pre>
 var newCar = ORMService.new( entityName='SimpleCar', properties={Year: 2012, ListPrice: 22000});
 </pre>
-<cfdump var="#prc.newcar#" expand="false">
+<cfdump var="#prc.newcar#" expand="true">
             </div>
         </div>
     </div>
@@ -73,7 +70,7 @@ var newCar = ORMService.new( entityName='SimpleCar', properties={Year: 2012, Lis
 <pre>
 var foundCar = ORMService.findWhere( entityName='SimpleCar', criteria={ CarID = 12 } );
 </pre>
-<cfdump var="#prc.mycar#" expand="false">
+<cfdump var="#prc.mycar#" expand="true">
             </div>
         </div>
     </div>
@@ -92,7 +89,7 @@ var foundCar = ORMService.findWhere( entityName='SimpleCar', criteria={ CarID = 
 <pre>
 var carList = ORMService.list( entityName='SimpleCar', max=3, asQuery=false );
 </pre>
-<cfdump var="#prc.cars#" expand="false">
+<cfdump var="#prc.cars#" expand="true">
             </div>
         </div>
     </div>

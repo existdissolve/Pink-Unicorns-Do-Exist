@@ -7,10 +7,10 @@
                 </a>
             </h4>
         </div>
-        <div id="one" class="panel-collapse collapse">
+        <div id="one" class="panel-collapse collapse in">
             <div class="panel-body">
 <pre>
-extends="coldbox.system.orm.hibernate.ActiveEntity"
+extends="cborm.models.ActiveEntity"
 ...
 public ActiveCar function init() {
     super.init();
@@ -34,9 +34,9 @@ public ActiveCar function init() {
             <div class="panel-body">
 <pre>
 var car = entityNew( "ActiveCar" );
-var newCar = car.new( properties={Year: 2012, ListPrice: 22000});
+prc.newCar = car.new( properties={ Year= 2012, ListPrice= 22000 });
 </pre>
-<cfdump var="#prc.newcar#" expand="false">
+<cfdump var="#prc.newcar#" expand="true">
             </div>
         </div>
     </div>
@@ -54,9 +54,9 @@ var newCar = car.new( properties={Year: 2012, ListPrice: 22000});
             <div class="panel-body">
 <pre>
 var car = entityNew( "ActiveCar" );
-var foundCar = ORMService.findWhere( entityName='SimpleCar', criteria={ CarID = 12 } );
+prc.myCar = car.findWhere( criteria={ CarID = 12 } );
 </pre>
-<cfdump var="#prc.mycar#" expand="false">
+<cfdump var="#prc.mycar#" expand="true">
             </div>
         </div>
     </div>
@@ -74,9 +74,9 @@ var foundCar = ORMService.findWhere( entityName='SimpleCar', criteria={ CarID = 
             <div class="panel-body">
 <pre>
 var car = entityNew( "ActiveCar" );
-var carList = ORMService.list( entityName='SimpleCar', max=3, asQuery=false );
+prc.cars = car.list( max=3, asQuery=false );
 </pre>
-<cfdump var="#prc.cars#" expand="false">
+<cfdump var="#prc.cars#" expand="true">
             </div>
         </div>
     </div>

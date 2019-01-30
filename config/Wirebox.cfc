@@ -51,7 +51,7 @@ Description :
 		};
 		
 		// Map Bindings below
-		mapDirectory( "CarTracker.model.service" );
+		mapDirectory( "CarTracker.models.service" );
 	}	
 </cfscript>
 </cfcomponent>

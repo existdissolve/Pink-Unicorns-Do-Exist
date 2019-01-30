@@ -7,10 +7,10 @@
                 </a>
             </h4>
         </div>
-        <div id="one" class="panel-collapse collapse">
+        <div id="one" class="panel-collapse collapse in">
             <div class="panel-body">
 <pre>
-property name="CarService" inject="id:SimpleCarService";
+property name="carService" inject="id:SimpleCarService";
 ...
 </pre>
             </div>
@@ -29,9 +29,9 @@ property name="CarService" inject="id:SimpleCarService";
         <div id="two" class="panel-collapse collapse">
             <div class="panel-body">
 <pre>
-var newCar = CarService.new( properties={Year: 2012, ListPrice: 22000});
+var newCar = carService.new( properties={Year: 2012, ListPrice: 22000});
 </pre>
-<cfdump var="#prc.newcar#" expand="false">
+<cfdump var="#prc.newcar#" expand="true">
             </div>
         </div>
     </div>
@@ -48,9 +48,9 @@ var newCar = CarService.new( properties={Year: 2012, ListPrice: 22000});
         <div id="three" class="panel-collapse collapse">
             <div class="panel-body">
 <pre>
-var foundCar = CarService.findWhere( criteria={ CarID = 12 } );
+var foundCar = carService.findWhere( criteria={ CarID = 12 } );
 </pre>
-<cfdump var="#prc.mycar#" expand="false">
+<cfdump var="#prc.mycar#" expand="true">
             </div>
         </div>
     </div>
@@ -67,9 +67,9 @@ var foundCar = CarService.findWhere( criteria={ CarID = 12 } );
         <div id="four" class="panel-collapse collapse">
             <div class="panel-body">
 <pre>
-var carList = CarService.list( max=3, asQuery=false );
+var carList = carService.list( max=3, asQuery=false );
 </pre>
-<cfdump var="#prc.cars#" expand="false">
+<cfdump var="#prc.cars#" expand="true">
             </div>
         </div>
     </div>
@@ -86,7 +86,7 @@ var carList = CarService.list( max=3, asQuery=false );
         <div id="five" class="panel-collapse collapse">
             <div class="panel-body">
 <pre>
-var newCars = CarService.getNewCars();
+var newCars = carService.getNewCars();
 ...
 public function getNewCars() {
     var c = newCriteria();
@@ -94,7 +94,7 @@ public function getNewCars() {
     return c.list( max=3, asQuery = false );
 }
 </pre>
-<cfdump var="#prc.newcars#" expand="false">
+<cfdump var="#prc.newcars#" expand="true">
             </div>
         </div>
     </div>

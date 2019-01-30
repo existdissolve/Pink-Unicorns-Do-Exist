@@ -1,4 +1,0 @@
-component {
-    writedump( application );
-    abort;
-}

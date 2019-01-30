@@ -1,0 +1,47 @@
+{
+    "name":"Car Tracker CBORM Demo",
+    "version":"2.0.0",
+    "author":"Luis Majano <lmajano@ortussolutions.com>",
+    "createPackageDirectory":false,
+    "homepage":"http://www.coldbox.org",
+    "documentation":"http://wiki.coldbox.org/wiki/ORM:BaseORMService.cfm",
+    "repository":{
+        "type":"git",
+        "url":"git@github.com:lmajano/Pink-Unicorns-Do-Exist.git"
+    },
+    "bugs":"",
+    "slug":"CarTracker-Demo",
+    "shortDescription":"An awesome demo of the CodlBox 4 ORM Services in action",
+    "type":"Demos",
+    "keywords":[],
+    "private":false,
+    "defaultEngine":"",
+    "projectURL":"",
+    "license":[
+        {
+            "type":"Apache2",
+            "url":"http://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+    ],
+    "contributors":[
+        "Joel Watson <existdissolve@gmail.com>",
+        " Javier Quintero <jquintero@ortussolutions.com>"
+    ],
+    "dependencies":{
+        "coldbox":"^5.0.0",
+        "cborm":"^1.0.3"
+    },
+    "devDependencies":{},
+    "installPaths":{
+        "coldbox":"coldbox/",
+        "cborm":"modules/cborm/"
+    },
+    "ignore":[],
+    "testbox":{
+        "runner":[
+            {
+                "default":"http://localhost:8090"
+            }
+        ]
+    }
+}

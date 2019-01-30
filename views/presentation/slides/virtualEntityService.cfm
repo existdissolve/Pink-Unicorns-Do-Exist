@@ -10,7 +10,7 @@
         <div id="one" class="panel-collapse collapse">
             <div class="panel-body">
 <pre>
-property name="VirtualCarService" inject="entityService:SimpleCar";
+property name="virtualCarService" inject="entityService:SimpleCar";
 ...
 </pre>
             </div>
@@ -29,9 +29,9 @@ property name="VirtualCarService" inject="entityService:SimpleCar";
         <div id="two" class="panel-collapse collapse">
             <div class="panel-body">
 <pre>
-var newCar = VirtualCarService.new( properties={Year: 2012, ListPrice: 22000});
+var newCar = virtualCarService.new( properties={Year: 2012, ListPrice: 22000});
 </pre>
-<cfdump var="#prc.newcar#" expand="false">
+<cfdump var="#prc.newcar#" expand="true">
             </div>
         </div>
     </div>
@@ -48,9 +48,9 @@ var newCar = VirtualCarService.new( properties={Year: 2012, ListPrice: 22000});
         <div id="three" class="panel-collapse collapse">
             <div class="panel-body">
 <pre>
-var foundCar = VirtualCarService.findWhere( criteria={ CarID = 12 } );
+var foundCar = virtualCarService.findWhere( criteria={ CarID = 12 } );
 </pre>
-<cfdump var="#prc.mycar#" expand="false">
+<cfdump var="#prc.mycar#" expand="true">
             </div>
         </div>
     </div>
@@ -67,9 +67,9 @@ var foundCar = VirtualCarService.findWhere( criteria={ CarID = 12 } );
         <div id="four" class="panel-collapse collapse">
             <div class="panel-body">
 <pre>
-var carList = VirtualCarService.list( max=3, asQuery=false );
+var carList = virtualCarService.list( max=3, asQuery=false );
 </pre>
-<cfdump var="#prc.cars#" expand="false">
+<cfdump var="#prc.cars#" expand="true">
             </div>
         </div>
     </div>
